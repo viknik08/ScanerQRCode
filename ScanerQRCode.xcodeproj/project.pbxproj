@@ -10,9 +10,9 @@
 		BE6A3B4329B791AA00C65280 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A3B4229B791AA00C65280 /* AppDelegate.swift */; };
 		BE6A3B4529B791AA00C65280 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A3B4429B791AA00C65280 /* SceneDelegate.swift */; };
 		BE6A3B4729B791AA00C65280 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A3B4629B791AA00C65280 /* ViewController.swift */; };
-		BE6A3B4A29B791AA00C65280 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6A3B4829B791AA00C65280 /* Main.storyboard */; };
 		BE6A3B4C29B791AC00C65280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6A3B4B29B791AC00C65280 /* Assets.xcassets */; };
 		BE6A3B4F29B791AC00C65280 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6A3B4D29B791AC00C65280 /* LaunchScreen.storyboard */; };
+		BE6A3B5E29B7963C00C65280 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE6A3B5D29B7963C00C65280 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +20,6 @@
 		BE6A3B4229B791AA00C65280 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE6A3B4429B791AA00C65280 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BE6A3B4629B791AA00C65280 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BE6A3B4929B791AA00C65280 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BE6A3B4B29B791AC00C65280 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BE6A3B4E29B791AC00C65280 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE6A3B5029B791AC00C65280 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6A3B5E29B7963C00C65280 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +56,62 @@
 		BE6A3B4129B791AA00C65280 /* ScanerQRCode */ = {
 			isa = PBXGroup;
 			children = (
-				BE6A3B4229B791AA00C65280 /* AppDelegate.swift */,
-				BE6A3B4429B791AA00C65280 /* SceneDelegate.swift */,
-				BE6A3B4629B791AA00C65280 /* ViewController.swift */,
-				BE6A3B4829B791AA00C65280 /* Main.storyboard */,
+				BE6A3B5629B7951700C65280 /* Sources */,
+				BE6A3B5729B7952400C65280 /* Resources */,
+			);
+			path = ScanerQRCode;
+			sourceTree = "<group>";
+		};
+		BE6A3B5629B7951700C65280 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				BE6A3B5829B7955D00C65280 /* App */,
+				BE6A3B5A29B795A600C65280 /* Helpers */,
+				BE6A3B5929B7956B00C65280 /* Modules */,
+				BE6A3B5B29B795B800C65280 /* Extensions */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		BE6A3B5729B7952400C65280 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
 				BE6A3B4B29B791AC00C65280 /* Assets.xcassets */,
 				BE6A3B4D29B791AC00C65280 /* LaunchScreen.storyboard */,
 				BE6A3B5029B791AC00C65280 /* Info.plist */,
 			);
-			path = ScanerQRCode;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BE6A3B5829B7955D00C65280 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BE6A3B4229B791AA00C65280 /* AppDelegate.swift */,
+				BE6A3B4429B791AA00C65280 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		BE6A3B5929B7956B00C65280 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				BE6A3B4629B791AA00C65280 /* ViewController.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		BE6A3B5A29B795A600C65280 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BE6A3B5B29B795B800C65280 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +130,9 @@
 			dependencies = (
 			);
 			name = ScanerQRCode;
+			packageProductDependencies = (
+				BE6A3B5D29B7963C00C65280 /* SnapKit */,
+			);
 			productName = ScanerQRCode;
 			productReference = BE6A3B3F29B791AA00C65280 /* ScanerQRCode.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +161,9 @@
 				Base,
 			);
 			mainGroup = BE6A3B3629B791A900C65280;
+			packageReferences = (
+				BE6A3B5C29B7963C00C65280 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = BE6A3B4029B791AA00C65280 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +180,6 @@
 			files = (
 				BE6A3B4F29B791AC00C65280 /* LaunchScreen.storyboard in Resources */,
 				BE6A3B4C29B791AC00C65280 /* Assets.xcassets in Resources */,
-				BE6A3B4A29B791AA00C65280 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +199,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		BE6A3B4829B791AA00C65280 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BE6A3B4929B791AA00C65280 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BE6A3B4D29B791AC00C65280 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,10 +335,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 65ZD43WNWU;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ScanerQRCode/Info.plist;
+				INFOPLIST_FILE = ScanerQRCode/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -319,10 +362,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 65ZD43WNWU;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ScanerQRCode/Info.plist;
+				INFOPLIST_FILE = ScanerQRCode/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -360,6 +402,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BE6A3B5C29B7963C00C65280 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BE6A3B5D29B7963C00C65280 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BE6A3B5C29B7963C00C65280 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BE6A3B3729B791A900C65280 /* Project object */;
 }
