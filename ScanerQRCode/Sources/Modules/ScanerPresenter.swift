@@ -12,17 +12,19 @@ protocol ScanerViewProtocol: AnyObject {
 }
 
 protocol ScanerPresenterProtocol: AnyObject {
-    init(view: ScanerViewProtocol, router: RouterProtocol)
+    init(view: ScanerViewProtocol, router: RouterProtocol, cameraService: CameraServiceProtocol)
 }
 
 class ScanerPresenter: ScanerPresenterProtocol {
 
     weak var view: ScanerViewProtocol?
     var router: RouterProtocol?
+    var cameraService: CameraServiceProtocol?
     
-    required init(view: ScanerViewProtocol, router: RouterProtocol) {
+    required init(view: ScanerViewProtocol, router: RouterProtocol, cameraService: CameraServiceProtocol) {
         self.view = view
         self.router = router
+        self.cameraService = cameraService
     }
 
 }
