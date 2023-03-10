@@ -15,7 +15,8 @@ class ModuleBuilder: ModuleBuilderProtocol {
     
     func createScanerModule(router: RouterProtocol) -> UIViewController {
         let view = ScanerViewController()
-        let presenter = ScanerPresenter(view: view, router: router)
+        let cameraService = CameraService()
+        let presenter = ScanerPresenter(view: view, router: router, cameraService: cameraService)
         view.presenter = presenter
         
         return view
