@@ -78,7 +78,6 @@ class CameraService: NSObject, AVCaptureMetadataOutputObjectsDelegate, CameraSer
         captureSession = nil
     }
 
-
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         captureSession?.stopRunning()
 
@@ -92,8 +91,6 @@ class CameraService: NSObject, AVCaptureMetadataOutputObjectsDelegate, CameraSer
         delegate?.cameraServiceDismiss(self)
     }
 
-    //MARK: - Work method
-
     func found(code: String) {
         DispatchQueue.main.async {
             self.delegate?.cameraService(self, foundQRCode: code)
@@ -104,8 +101,5 @@ class CameraService: NSObject, AVCaptureMetadataOutputObjectsDelegate, CameraSer
         return true
     }
 
-//    var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-//        return .portrait
-//    }
 }
 
