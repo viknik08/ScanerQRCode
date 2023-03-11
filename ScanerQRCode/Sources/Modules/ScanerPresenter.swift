@@ -16,7 +16,7 @@ protocol ScanerViewProtocol: AnyObject {
 }
 
 protocol ScanerPresenterProtocol: AnyObject {
-    init(view: ScanerViewProtocol, router: RouterProtocol, cameraService: CameraServiceProtocol)
+    init(view: ScanerViewProtocol, router: RouterProtocol, cameraService: CameraServiceProtocol, webView: WebView)
     
     func handleAppearigView()
     func handleDisappearigView()
@@ -28,12 +28,15 @@ class ScanerPresenter: ScanerPresenterProtocol {
 
     weak var view: ScanerViewProtocol?
     var router: RouterProtocol?
-    var cameraService: CameraServiceProtocol?
+    weak var cameraService: CameraServiceProtocol?
+    var webView: WebView?
     
-    required init(view: ScanerViewProtocol, router: RouterProtocol, cameraService: CameraServiceProtocol) {
+    required init(view: ScanerViewProtocol, router: RouterProtocol, cameraService: CameraServiceProtocol, webView: WebView) {
         self.view = view
         self.router = router
         self.cameraService = cameraService
+        self.webView = webView
+        cameraService.delegate = self
     }
     
     func test() {
@@ -44,18 +47,24 @@ class ScanerPresenter: ScanerPresenterProtocol {
     }
 
     func runCapture() {
-        cameraService?.captureSession?.startRunning()
-    }
-
-    func handleAppearigView() {
-        if (cameraService?.captureSession?.isRunning == false) {
-            cameraService?.captureSession?.startRunning()
+        DispatchQueue.global(qos: .background).async {
+            self.cameraService?.captureSession?.startRunning()
         }
     }
-
+    
+    func handleAppearigView() {
+        DispatchQueue.global(qos: .background).async {
+            if (self.cameraService?.captureSession?.isRunning == false) {
+                self.cameraService?.captureSession?.startRunning()
+            }
+        }
+    }
+    
     func handleDisappearigView() {
-        if (cameraService?.captureSession?.isRunning == true) {
-            cameraService?.captureSession?.stopRunning()
+        DispatchQueue.global(qos: .background).async {
+            if (self.cameraService?.captureSession?.isRunning == true) {
+                self.cameraService?.captureSession?.stopRunning()
+            }
         }
     }
 
@@ -73,8 +82,9 @@ extension ScanerPresenter: CameraServiceDelegat {
 
     func cameraService(_ cameraService: CameraService, foundQRCode code: String) {
         print(code)
-        WebView.urlText = code
-        view?.pushTo(controller: WebView())
+        guard let webView = webView else { return }
+        webView.urlText = code
+        view?.pushTo(controller: webView)
     }
     
 }

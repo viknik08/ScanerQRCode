@@ -16,12 +16,12 @@ class WebView: UIViewController {
         return webView
     }()
     
-    static var urlText: String = ""
+    var urlText: String = ""
     
     private var activityIndicatorContainer: UIView!
     private var activityIndicator: UIActivityIndicatorView!
 
-    let NSDateURL = NSData(contentsOf: URL(string: WebView.urlText)!)
+    var NSDateURL: NSData?
     
     override func loadView() {
         super.loadView()
@@ -29,9 +29,11 @@ class WebView: UIViewController {
         view.addSubview(webView)
         
         // Constraints
-        webView.snp.makeConstraints { make in
-            make.top.left.right.bottom.equalTo(view)
-        }
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     override func viewDidLoad() {
@@ -39,12 +41,20 @@ class WebView: UIViewController {
         
         webView.navigationDelegate = self
         setToolBar()
-        sendRequest(urlString: WebView.urlText)
+        getDataUrl()
+        sendRequest(urlString: urlText)
+    }
+    
+    private func getDataUrl() {
+        DispatchQueue.global(qos: .background).async {
+            guard let url = URL(string: self.urlText) else { return }
+            self.NSDateURL = NSData(contentsOf: url)
+        }
     }
     
     private func sendRequest(urlString: String) {
-        let myURL = URL(string: urlString)
-        let myRequest = URLRequest(url: myURL!)
+        guard let myURL = URL(string: urlString) else { return }
+        let myRequest = URLRequest(url: myURL)
         webView.load(myRequest)
     }
     
@@ -65,9 +75,8 @@ class WebView: UIViewController {
         webView.addSubview(activityIndicatorContainer)
         
         // Constraints
-        activityIndicator.snp.makeConstraints { make in
-            make.center.equalTo(view)
-        }
+        activityIndicator.centerXAnchor.constraint(equalTo: activityIndicatorContainer.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: activityIndicatorContainer.centerYAnchor).isActive = true
     }
     
     private func setToolBar() {
@@ -82,9 +91,9 @@ class WebView: UIViewController {
         webView.addSubview(toolBar)
         
         // Constraints
-        toolBar.snp.makeConstraints { make in
-            make.bottom.leading.trailing.equalTo(webView)
-        }
+        toolBar.bottomAnchor.constraint(equalTo: webView.bottomAnchor, constant: 0).isActive = true
+        toolBar.leadingAnchor.constraint(equalTo: webView.leadingAnchor, constant: 0).isActive = true
+        toolBar.trailingAnchor.constraint(equalTo: webView.trailingAnchor, constant: 0).isActive = true
     }
     
     @objc private func goBack() {
@@ -96,7 +105,8 @@ class WebView: UIViewController {
     }
     
     @objc private func openAVC() {
-        let items: [Any] = [NSDateURL!]
+        guard let NSDateURL = NSDateURL else { return }
+        let items: [Any] = [NSDateURL]
         let activityViewController = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
         activityViewController.completionWithItemsHandler = doneSharingHandler
         activityViewController.popoverPresentationController?.sourceView = self.view
@@ -132,20 +142,20 @@ class WebView: UIViewController {
 }
 
 extension WebView: WKNavigationDelegate {
-    
+
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.showActivityIndicator(show: false)
     }
-    
+
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.setActivityIndicator()
         self.showActivityIndicator(show: true)
     }
-    
+
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.showActivityIndicator(show: false)
     }
-    
+
 }
 
 

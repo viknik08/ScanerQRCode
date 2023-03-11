@@ -12,7 +12,6 @@
 		BE6A3B4729B791AA00C65280 /* ScanerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6A3B4629B791AA00C65280 /* ScanerViewController.swift */; };
 		BE6A3B4C29B791AC00C65280 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6A3B4B29B791AC00C65280 /* Assets.xcassets */; };
 		BE6A3B4F29B791AC00C65280 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6A3B4D29B791AC00C65280 /* LaunchScreen.storyboard */; };
-		BE6A3B5E29B7963C00C65280 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BE6A3B5D29B7963C00C65280 /* SnapKit */; };
 		BE6AD19129BC7188001A6750 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6AD19029BC7188001A6750 /* WebView.swift */; };
 		BE81E96E29BAE09D00D0D7CE /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE81E96D29BAE09D00D0D7CE /* ModuleBuilder.swift */; };
 		BE81E97229BAE0C600D0D7CE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE81E97129BAE0C600D0D7CE /* Router.swift */; };
@@ -40,7 +39,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE6A3B5E29B7963C00C65280 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +168,6 @@
 			);
 			name = ScanerQRCode;
 			packageProductDependencies = (
-				BE6A3B5D29B7963C00C65280 /* SnapKit */,
 			);
 			productName = ScanerQRCode;
 			productReference = BE6A3B3F29B791AA00C65280 /* ScanerQRCode.app */;
@@ -201,7 +198,6 @@
 			);
 			mainGroup = BE6A3B3629B791A900C65280;
 			packageReferences = (
-				BE6A3B5C29B7963C00C65280 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = BE6A3B4029B791AA00C65280 /* Products */;
 			projectDirPath = "";
@@ -446,25 +442,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		BE6A3B5C29B7963C00C65280 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		BE6A3B5D29B7963C00C65280 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BE6A3B5C29B7963C00C65280 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BE6A3B3729B791A900C65280 /* Project object */;
 }
